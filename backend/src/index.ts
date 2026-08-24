@@ -7,8 +7,10 @@ import dotenv from "dotenv";
 import { clerkMiddleware, clerkClient, getAuth } from "@clerk/express";
 import { requireAuth } from "./middleware/auth.middleware";
 import webhookRoutes from "./routes/webhooks";
+import scrapeRoutes from "./routes/scrape";
+import savedItemRoutes from "./routes/savedItems";
 import connectDB from "./lib/mongoose";
-import { User } from "./models/user.model";
+import "dotenv/config";
 
 dotenv.config();
 
@@ -23,12 +25,18 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/api/webhooks", webhookRoutes);
+app.use(clerkMiddleware());
 
 app.use(express.json());
+
+app.use("/api/webhooks", webhookRoutes);
+
+app.use("/api/scrape", scrapeRoutes);
+
+app.use("/api/saved-items", savedItemRoutes);
+
 app.use(express.urlencoded({ extended: true }));
 
-app.use(clerkMiddleware());
 
 app.get("/health", async (_req: Request, res: Response) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });

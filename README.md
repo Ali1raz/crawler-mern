@@ -1,4 +1,4 @@
-## MERN stack project for crawling websites for ai agents and humans.
+## Crawling websites for ai agents and humans.
 
 ### Roadmap:
 
@@ -13,7 +13,7 @@
   - [x] init shadcn
   - [x] setup auth with clerk
 
-[ ]: setup firecrawl in backend
-[ ]: test firecrawl in backend using INSOMNIA (CRUD)
-[ ]: create ui in frontend to search blogs/articles using link
-[ ]: create ui in frontend to display crawled data (List + id page)
+- [x]: setup firecrawl in backend to scrape a url with refetch
+- [x]: test firecrawl in backend using INSOMNIA (CRUD)
+- [ ]: create ui in frontend to search blogs/articles using link
+- [ ]: create ui in frontend to display crawled data (List + id page)
