@@ -30,6 +30,12 @@
       "sourceType": "github",
       "skillPath": "skills/core/clerk-setup/SKILL.md",
       "computedHash": "872e14355294cdba47309203038dede847e38f0052745fc2dcc30dea6e5b6519"
+    },
+    "mongoose-mongodb": {
+      "source": "pluginagentmarketplace/custom-plugin-nodejs",
+      "sourceType": "github",
+      "skillPath": "skills/mongoose-mongodb/SKILL.md",
+      "computedHash": "620c2050ddb4451b5032a7a7120c44282f4ac91af229df92f9ce4cc0452c1ac5"
     }
   }
 }
