@@ -13,7 +13,7 @@ async function requestWithAuth<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const token = await getTokenServer();
-  
+
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
     ...(options.headers || {}),

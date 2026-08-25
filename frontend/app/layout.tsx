@@ -4,6 +4,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -37,20 +39,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <ClerkProvider>
-            <header className="border-b p-4">
-              <div className="flex items-center justify-between">
-                <Show when="signed-out">
-                  <div className="flex items-center gap-2">
-                    <SignInButton mode="modal" />
-                    <SignUpButton mode="modal" />
-                  </div>
-                </Show>
-                <Show when="signed-in">
-                  <UserButton />
-                </Show>
-              </div>
-            </header>
-            {children}
+            <TooltipProvider>
+              {children}
+              <Toaster />
+            </TooltipProvider>
           </ClerkProvider>
         </ThemeProvider>
       </body>
