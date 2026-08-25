@@ -22,8 +22,18 @@ const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(cors());
-app.use(morgan("dev"));
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL as string, // e.g. https://yourapp.vercel.app
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);app.use(morgan("dev"));
 
 app.use(clerkMiddleware());
 

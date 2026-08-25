@@ -124,7 +124,7 @@ router.post(
       item.status = "FAILED";
       await item.save();
 
-      return res.json({ success: false, error: "Scrape failed again" });
+      return res.status(500).json({ success: false, error: "Scrape failed again" });
     }
   },
 );

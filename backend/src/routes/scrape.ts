@@ -1,18 +1,26 @@
 import { Router, Request, Response } from "express";
 import { firecrawl } from "../lib/firecrawl";
 import { SavedItem } from "../models/savedItem.model";
-import { requireAuth } from "../middleware/auth.middleware";
+import { AuthedRequest, requireAuth } from "../middleware/auth.middleware";
+import { singleUrlImportSchema } from "../lib/schema";
 
 const router = Router();
 
-router.post("/", requireAuth, async (req: Request, res: Response) => {
-  const { url } = req.body;
+router.post("/", requireAuth, async (req: AuthedRequest, res: Response) => {
+  const result = singleUrlImportSchema.safeParse(req.body);
+
+  if (!result.success) {
+    return res.status(400).json({ error: result.error.message });
+  }
+
+  const { url } = result.data;
+  console.log("scraping url", url)
 
   if (!url) {
     return res.status(400).json({ error: "URL is required" });
   }
 
-  const userId = (req as any).session.user.id;
+  const userId = req.user?._id;
 
   if (!userId) {
     return res.status(401).json({ error: "Unauthorized" });
