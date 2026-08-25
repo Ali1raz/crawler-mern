@@ -15,5 +15,11 @@
 
 - [x]: setup firecrawl in backend to scrape a url with refetch
 - [x]: test firecrawl in backend using INSOMNIA (CRUD)
-- [ ]: create ui in frontend to search blogs/articles using link
-- [ ]: create ui in frontend to display crawled data (List + id page)
+- [x]: create ui in frontend to search blogs/articles using link
+- [x]: create ui in frontend to display crawled data (List + id page)
+
+- [ ]: DEPLOY
+
+- [ ]: add bulk crawl feature to backend (scrape multiple urls at once)
+- [ ]: create ui in frontend to search blogs/articles link and search query
+- [ ]: implement AI sdk to summarize the content and generate tags.
